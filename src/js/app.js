@@ -131,6 +131,9 @@ function searchCallback(err, options) {
             );
             Visualization.draw(visualizationData);
         }
+        else {
+            window.network = new vis.Network(Visualization.element, data, options);
+        }
     }
 }
 
