@@ -132,7 +132,8 @@ function searchCallback(err, options) {
             Visualization.draw(visualizationData);
         }
         else {
-            window.network = new vis.Network(Visualization.element, data, options);
+            var visualization = document.getElementById('visualization');
+            visualization.innerHTML = "FAILED"
         }
     }
 }
