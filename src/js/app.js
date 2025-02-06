@@ -1,5 +1,5 @@
-//var game = new Game('203156478');
-var game = new Game();
+var game = new Game('738456210');
+//var game = new Game();
 Board.draw(game.state);
 
 var boardDiv = document.getElementById('board');
@@ -128,7 +128,7 @@ function searchCallback(err, options) {
             options.frontierList,
             err ? null : options.node
         );
-        Visualization.draw(visualizationData);
+        //Visualization.draw(visualizationData);
     }
 }
 
