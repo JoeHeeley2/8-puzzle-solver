@@ -135,7 +135,7 @@ function searchCallback(err, options) {
             Visualization.draw(visualizationData);
         }
         else {
-            visualization.innerHTML = "<div style='display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 2rem;'>Hello</div>"
+            visualization.innerHTML = "<div style='display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 2rem;'>The AI has failed to solve this puzzle</div>"
         }
     }
 }
