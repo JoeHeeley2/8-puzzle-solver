@@ -123,13 +123,14 @@ function searchCallback(err, options) {
 
     // Draw
     if (visualizationCheckbox.checked) {
-        console.log(expandedNodesLength)
-        var visualizationData = Visualization.importData(
-            options.expandedNodes,
-            options.frontierList,
-            err ? null : options.node
-        );
-        Visualization.draw(visualizationData);
+        if (expandedNodesLength < 1500) {
+            var visualizationData = Visualization.importData(
+                options.expandedNodes,
+                options.frontierList,
+                err ? null : options.node
+            );
+            Visualization.draw(visualizationData);
+        }
     }
 }
 
