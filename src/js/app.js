@@ -15,6 +15,7 @@ var searchStepButton = document.getElementById('searchStep');
 var expandedNodeCheckbox = document.getElementById('expandedNodeCheck');
 var searchResultDiv = document.getElementById('searchResult');
 var visualizationCheckbox = document.getElementById('visualizationCheck');
+var visualization = document.getElementById('visualization');
 
 var searchStepOptions = null;
 
@@ -36,6 +37,7 @@ customInputButton.addEventListener('click', function() {
 }, false);
 
 searchButton.addEventListener('click', function() {
+    visualization.innerHTML = ""
     Board.clearReplay();
     searchStepOptions = null;
 
@@ -65,6 +67,7 @@ searchButton.addEventListener('click', function() {
 
 searchStepButton.addEventListener('click', function() {
     Board.clearReplay();
+
 
     if (searchStepOptions)
         return search(searchStepOptions);
@@ -132,7 +135,6 @@ function searchCallback(err, options) {
             Visualization.draw(visualizationData);
         }
         else {
-            var visualization = document.getElementById('visualization');
             visualization.innerHTML = "<div style='display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 2rem;'>Hello</div>"
         }
     }
