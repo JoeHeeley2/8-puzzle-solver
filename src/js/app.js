@@ -133,7 +133,7 @@ function searchCallback(err, options) {
         }
         else {
             var visualization = document.getElementById('visualization');
-            visualization.innerHTML = "FAILED"
+            visualization.innerHTML = "<div style='display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 2rem;'>Hello</div>"
         }
     }
 }
