@@ -126,17 +126,20 @@ function searchCallback(err, options) {
 
     // Draw
     if (visualizationCheckbox.checked) {
-        if (expandedNodesLength < 1500) {
-            var visualizationData = Visualization.importData(
-                options.expandedNodes,
-                options.frontierList,
-                err ? null : options.node
-            );
-            Visualization.draw(visualizationData);
+        if (options.iteration > iterationLimitInput) {
+            visualization.innerHTML = "<div style='display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 2rem;'>The AI has failed to solve this puzzle within the iteration limit!</div>"
         }
         else {
-            visualization.innerHTML = "<div style='display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 2rem;'>The AI has failed to solve this puzzle</div>"
+            if (expandedNodesLength < 1500) {
+                var visualizationData = Visualization.importData(
+                    options.expandedNodes,
+                    options.frontierList,
+                    err ? null : options.node
+                );
+                Visualization.draw(visualizationData);
+            }
         }
+
     }
 }
 
