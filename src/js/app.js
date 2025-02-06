@@ -123,12 +123,13 @@ function searchCallback(err, options) {
 
     // Draw
     if (visualizationCheckbox.checked) {
+        console.log(expandedNodesLength)
         var visualizationData = Visualization.importData(
             options.expandedNodes,
             options.frontierList,
             err ? null : options.node
         );
-        //Visualization.draw(visualizationData);
+        Visualization.draw(visualizationData);
     }
 }
 
