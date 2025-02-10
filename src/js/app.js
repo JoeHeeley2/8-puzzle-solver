@@ -1,4 +1,4 @@
-var game = new Game('738456210');
+var game = new Game('645382710');
 //var game = new Game();
 Board.draw(game.state);
 
@@ -130,7 +130,7 @@ function searchCallback(err, options) {
             visualization.innerHTML = "<div style='display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 2rem;'>Solution Not Found!</div>"
         }
         else {
-            if (expandedNodesLength < 3000) {
+            if (expandedNodesLength < 4000) {
                 var visualizationData = Visualization.importData(
                     options.expandedNodes,
                     options.frontierList,
