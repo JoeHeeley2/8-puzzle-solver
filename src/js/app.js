@@ -130,14 +130,14 @@ function searchCallback(err, options) {
             visualization.innerHTML = "<div style='display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 2rem;'>Solution Not Found!</div>"
         }
         else {
-            //if (expandedNodesLength < 1500) {
+            if (expandedNodesLength < 3000) {
                 var visualizationData = Visualization.importData(
                     options.expandedNodes,
                     options.frontierList,
                     err ? null : options.node
                 );
                 Visualization.draw(visualizationData);
-            //}
+            }
         }
 
     }
