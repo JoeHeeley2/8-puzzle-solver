@@ -138,6 +138,9 @@ function searchCallback(err, options) {
                 );
                 Visualization.draw(visualizationData);
             }
+            else {
+
+            }
         }
 
     }
