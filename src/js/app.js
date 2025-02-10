@@ -126,8 +126,8 @@ function searchCallback(err, options) {
 
     // Draw
     if (visualizationCheckbox.checked) {
-        console.log(options.iteration, iterationLimitInput)
-        if (options.iteration === iterationLimitInput) {
+        console.log(options.iteration, iterationLimitInput.val())
+        if (options.iteration === iterationLimitInput.val()) {
             visualization.innerHTML = "<div style='display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 2rem;'>The AI has failed to solve this puzzle within the iteration limit!</div>"
         }
         else {
