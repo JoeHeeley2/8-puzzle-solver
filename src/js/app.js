@@ -188,3 +188,88 @@ function replayWinnerNode() {
     traverse(window.winnerNode);
     Board.replay(moves);
 }
+
+
+var timerElement = document.getElementById('timer');
+var timerInterval;
+var startTime;
+
+// Function to start the timer
+function startTimer() {
+    startTime = Date.now();
+    timerElement.innerText = '0s';
+
+    timerInterval = setInterval(function() {
+        let elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        timerElement.innerText = elapsedTime + 's';
+    }, 1000);
+}
+
+// Function to stop the timer
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+// Modify search button event to start timer
+searchButton.addEventListener('click', function() {
+    startTimer();
+}, false);
+
+// Modify search stop button event to stop timer
+searchStopButton.addEventListener('click', function() {
+    stopTimer();
+    timerElement.innerText = '0s';  // Reset timer
+}, false);
+
+// Modify search callback to stop timer on completion
+function searchCallback(err, options) {
+    stopTimer();
+    // (Rest of your existing function logic...)
+}
+
+var timerElement = document.getElementById('timer');
+var timerInterval;
+var startTime;
+
+// Function to format time in MM:SS
+function formatTime(seconds) {
+    let minutes = Math.floor(seconds / 60);
+    let secs = seconds % 60;
+    return (
+        (minutes < 10 ? '0' : '') + minutes + ':' +
+        (secs < 10 ? '0' : '') + secs
+    );
+}
+
+// Function to start the timer
+function startTimer() {
+    startTime = Date.now();
+    timerElement.innerText = '00:00';
+
+    timerInterval = setInterval(function() {
+        let elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        timerElement.innerText = formatTime(elapsedTime);
+    }, 1000);
+}
+
+// Function to stop the timer
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+// Modify search button event to start timer
+searchButton.addEventListener('click', function() {
+    startTimer();
+}, false);
+
+// Modify search stop button event to stop timer
+searchStopButton.addEventListener('click', function() {
+    stopTimer();
+    timerElement.innerText = '00:00';  // Reset timer
+}, false);
+
+// Modify search callback to stop timer on completion
+function searchCallback(err, options) {
+    stopTimer();
+    // (Rest of your existing function logic...)
+}
