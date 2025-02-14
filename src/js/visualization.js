@@ -37,6 +37,7 @@ Visualization.draw = function(data) {
             Board.clearReplay();
         }
     });
+    stopTimer()
 };
 
 

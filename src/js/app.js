@@ -137,7 +137,6 @@ function searchCallback(err, options) {
                     err ? null : options.node
                 );
                 Visualization.draw(visualizationData);
-                stopTimer()
             }
         }
 
