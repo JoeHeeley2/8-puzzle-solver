@@ -16,6 +16,7 @@ var expandedNodeCheckbox = document.getElementById('expandedNodeCheck');
 var searchResultDiv = document.getElementById('searchResult');
 var visualizationCheckbox = document.getElementById('visualizationCheck');
 var visualization = document.getElementById('visualization');
+var visualization = document.getElementById('timer');
 
 var searchStepOptions = null;
 
