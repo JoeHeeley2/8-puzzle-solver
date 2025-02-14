@@ -16,7 +16,6 @@ var expandedNodeCheckbox = document.getElementById('expandedNodeCheck');
 var searchResultDiv = document.getElementById('searchResult');
 var visualizationCheckbox = document.getElementById('visualizationCheck');
 var visualization = document.getElementById('visualization');
-var visualization = document.getElementById('timer');
 
 var searchStepOptions = null;
 
@@ -142,6 +141,7 @@ function searchCallback(err, options) {
         }
 
     }
+    stopTimer()
 }
 
 function stepCallback(options) {
@@ -190,67 +190,33 @@ function replayWinnerNode() {
     Board.replay(moves);
 }
 
-
 var timerElement = document.getElementById('timer');
 var timerInterval;
 var startTime;
 
-// Function to start the timer
-function startTimer() {
-    startTime = Date.now();
-    timerElement.innerText = '0s';
+// Function to format time in MM:SS:MSMS
+function formatTime(milliseconds) {
+    let totalSeconds = Math.floor(milliseconds / 1000);
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds % 60;
+    let ms = Math.floor((milliseconds % 1000) / 10); // Get two decimal places for milliseconds
 
-    timerInterval = setInterval(function() {
-        let elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-        timerElement.innerText = elapsedTime + 's';
-    }, 1000);
-}
-
-// Function to stop the timer
-function stopTimer() {
-    clearInterval(timerInterval);
-}
-
-// Modify search button event to start timer
-searchButton.addEventListener('click', function() {
-    startTimer();
-}, false);
-
-// Modify search stop button event to stop timer
-searchStopButton.addEventListener('click', function() {
-    stopTimer();
-    timerElement.innerText = '0s';  // Reset timer
-}, false);
-
-// Modify search callback to stop timer on completion
-function searchCallback(err, options) {
-    stopTimer();
-    // (Rest of your existing function logic...)
-}
-
-var timerElement = document.getElementById('timer');
-var timerInterval;
-var startTime;
-
-// Function to format time in MM:SS
-function formatTime(seconds) {
-    let minutes = Math.floor(seconds / 60);
-    let secs = seconds % 60;
     return (
         (minutes < 10 ? '0' : '') + minutes + ':' +
-        (secs < 10 ? '0' : '') + secs
+        (seconds < 10 ? '0' : '') + seconds + ':' +
+        (ms < 10 ? '0' : '') + ms
     );
 }
 
 // Function to start the timer
 function startTimer() {
     startTime = Date.now();
-    timerElement.innerText = '00:00';
+    timerElement.innerText = '00:00:00';
 
     timerInterval = setInterval(function() {
-        let elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        let elapsedTime = Date.now() - startTime;
         timerElement.innerText = formatTime(elapsedTime);
-    }, 1000);
+    }, 10); // Update every 10ms for better accuracy
 }
 
 // Function to stop the timer
@@ -266,11 +232,6 @@ searchButton.addEventListener('click', function() {
 // Modify search stop button event to stop timer
 searchStopButton.addEventListener('click', function() {
     stopTimer();
-    timerElement.innerText = '00:00';  // Reset timer
+    timerElement.innerText = '00:00:00';  // Reset timer
 }, false);
 
-// Modify search callback to stop timer on completion
-function searchCallback(err, options) {
-    stopTimer();
-    // (Rest of your existing function logic...)
-}
