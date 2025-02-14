@@ -213,6 +213,7 @@ function formatTime(milliseconds) {
 // Function to start the timer
 function startTimer() {
     // Reset elapsedTime to 0 and start from there
+    timerElement.innerHTML = "00:00:00"
     startTime = Date.now() - stoppedTime;
     timerInterval = setInterval(function() {
         elapsedTime = Date.now() - startTime;
