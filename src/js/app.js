@@ -212,18 +212,18 @@ function formatTime(milliseconds) {
 
 // Function to start the timer
 function startTimer() {
-    // Reset elapsedTime to 0 and start from there
-    startTime = Date.now() - stoppedTime;
+    // Reset the start time and elapsed time to 0 for each new start
+    startTime = Date.now(); // Start the timer from 0
     timerInterval = setInterval(function() {
-        elapsedTime = 0
-        timerElement.innerText = formatTime(elapsedTime);
+        elapsedTime = Date.now() - startTime; // Calculate elapsed time
+        timerElement.innerText = formatTime(elapsedTime); // Update the display
     }, 10); // Update every 10ms for better accuracy
 }
 
 // Function to stop the timer
 function stopTimer() {
     clearInterval(timerInterval);
-    stoppedTime = elapsedTime; // Store the time where it was stopped
+    stoppedTime = elapsedTime; // Store the time when the timer was stopped
     timerElement.innerText = formatTime(stoppedTime); // Display the time when stopped
 }
 
@@ -236,3 +236,4 @@ document.getElementById('search').addEventListener('click', function() {
 document.getElementById('searchStop').addEventListener('click', function() {
     stopTimer();
 }, false);
+
