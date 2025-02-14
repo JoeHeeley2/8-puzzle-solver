@@ -120,3 +120,20 @@ html, margin {
 #controls .content {
     margin: 5px;
 }
+
+#timer {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+    width: 220px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+    color: #333;
+    position: absolute;
+    top: 170px;  /* Places it below the board */
+    left: 50%;
+    transform: translateX(-50%);
+}
