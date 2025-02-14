@@ -140,10 +140,7 @@ function searchCallback(err, options) {
             }
         }
     }
-    visualizeAsync(options, function() {
-        // Stop the timer after visualization is done
         stopTimer();
-    });
 }
 
 function stepCallback(options) {
@@ -238,11 +235,3 @@ document.getElementById('search').addEventListener('click', function() {
 document.getElementById('searchStop').addEventListener('click', function() {
     stopTimer();
 }, false);
-
-// Mock async function to simulate time taken for visualization rendering
-function visualizeAsync(options, callback) {
-    // Simulate a long-running process (e.g., rendering)
-    setTimeout(function() {
-        callback();
-    }, 5000); // Simulate 5 seconds for visualization rendering
-}
