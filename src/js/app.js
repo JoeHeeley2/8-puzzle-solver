@@ -196,10 +196,10 @@ var startTime;
 
 // Function to format time in MM:SS:MSMS
 function formatTime(milliseconds) {
-    let totalSeconds = Math.floor(milliseconds / 1000);
-    let minutes = Math.floor(totalSeconds / 60);
-    let seconds = totalSeconds % 60;
-    let ms = Math.floor((milliseconds % 1000) / 10); // Get two decimal places for milliseconds
+    var totalSeconds = Math.floor(milliseconds / 1000);
+    var minutes = Math.floor(totalSeconds / 60);
+    var seconds = totalSeconds % 60;
+    var ms = Math.floor((milliseconds % 1000) / 10); // Get two decimal places for milliseconds
 
     return (
         (minutes < 10 ? '0' : '') + minutes + ':' +
@@ -214,7 +214,7 @@ function startTimer() {
     timerElement.innerText = '00:00:00';
 
     timerInterval = setInterval(function() {
-        let elapsedTime = Date.now() - startTime;
+        var elapsedTime = Date.now() - startTime;
         timerElement.innerText = formatTime(elapsedTime);
     }, 10); // Update every 10ms for better accuracy
 }
@@ -225,12 +225,12 @@ function stopTimer() {
 }
 
 // Modify search button event to start timer
-searchButton.addEventListener('click', function() {
+document.getElementById('search').addEventListener('click', function() {
     startTimer();
 }, false);
 
 // Modify search stop button event to stop timer
-searchStopButton.addEventListener('click', function() {
+document.getElementById('searchStop').addEventListener('click', function() {
     stopTimer();
     timerElement.innerText = '00:00:00';  // Reset timer
 }, false);
