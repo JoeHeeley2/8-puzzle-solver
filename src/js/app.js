@@ -137,11 +137,11 @@ function searchCallback(err, options) {
                     err ? null : options.node
                 );
                 Visualization.draw(visualizationData);
+                stopTimer()
             }
         }
 
     }
-    stopTimer()
 }
 
 function stepCallback(options) {
@@ -193,6 +193,8 @@ function replayWinnerNode() {
 var timerElement = document.getElementById('timer');
 var timerInterval;
 var startTime;
+var elapsedTime = 0; // Store the elapsed time when the timer is running
+var stoppedTime = 0; // Store the time when the timer was stopped
 
 // Function to format time in MM:SS:MSMS
 function formatTime(milliseconds) {
@@ -210,11 +212,10 @@ function formatTime(milliseconds) {
 
 // Function to start the timer
 function startTimer() {
-    startTime = Date.now();
-    timerElement.innerText = '00:00:00';
-
+    // Reset elapsedTime to 0 and start from there
+    startTime = Date.now() - stoppedTime;
     timerInterval = setInterval(function() {
-        var elapsedTime = Date.now() - startTime;
+        elapsedTime = Date.now() - startTime;
         timerElement.innerText = formatTime(elapsedTime);
     }, 10); // Update every 10ms for better accuracy
 }
@@ -222,6 +223,8 @@ function startTimer() {
 // Function to stop the timer
 function stopTimer() {
     clearInterval(timerInterval);
+    stoppedTime = elapsedTime; // Store the time where it was stopped
+    timerElement.innerText = formatTime(stoppedTime); // Display the time when stopped
 }
 
 // Modify search button event to start timer
@@ -232,6 +235,4 @@ document.getElementById('search').addEventListener('click', function() {
 // Modify search stop button event to stop timer
 document.getElementById('searchStop').addEventListener('click', function() {
     stopTimer();
-    timerElement.innerText = '00:00:00';  // Reset timer
 }, false);
-
